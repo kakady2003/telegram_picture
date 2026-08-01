@@ -1,3 +1,24 @@
-from aiogram import Bot, Dispatcher
-# token_telegram_bot = "8449768959:AAHuydXVyp6_aTUfxHkQXXYp8_-u7rhvK3A"
-dp = Dispatcher
+import asyncio
+import logging
+
+from aiogram.filters import CommandStart
+
+from config import config
+from aiogram import  Dispatcher, types, Bot
+
+dp = Dispatcher()
+bot = Bot(token=config.BOT_TOKEN)
+
+
+@dp.message(CommandStart())
+async def start(message: types.Message):
+    await message.answer("Hi")
+
+
+async def main():
+    logging.basicConfig(level=logging.INFO)
+    await dp.start_polling(bot)
+
+
+if __name__ == '__main__':
+    asyncio.run(main())
