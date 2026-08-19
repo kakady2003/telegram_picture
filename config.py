@@ -12,7 +12,6 @@ class Config:
     DB_PASSWORD = os.getenv("DB_PASSWORD")
     DB_NAME = os.getenv("DB_NAME")
 
-
     def get_db_url(self) -> str:
         db_url = (f"postgresql+asyncpg://"
                   f"{self.DB_USER}:"
@@ -25,6 +24,3 @@ class Config:
 
 
 config = Config()
-
-
-
